@@ -22,7 +22,9 @@ function App() {
       const result = eval(displayValue);
       setDisplayValue(result.toString());
     } catch (error) {
-      console.error('Error calculating:', error);
+      if (label) {
+        label.textContent = 'Invalid expression';
+      }
     }
   }
 
@@ -41,8 +43,8 @@ function App() {
       <Card className="w-[350px] flex flex-col">
         <CardHeader>
           <CardTitle className="flex justify-center text-lg">Calculator</CardTitle>
-            <label id="label" className="w-full bg-slate-600 size-14 text-white text-lg font-bold px-2 justify-end">{displayValue}</label>
-          </CardHeader>
+          <label id="label" className="w-full bg-slate-600 size-14 text-white text-lg font-bold px-2 flex justify-end items-center">{displayValue}</label>
+        </CardHeader>
 
         <div className="grid justify-center grid-cols-4 gap-2 px-4">
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onClick={() => appendToDisplay('÷')}>÷</button>
